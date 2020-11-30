@@ -12,7 +12,7 @@ import java.util.List;
  */
 public interface UserMapper {
     //查询
-    List<User> queryUserById(@Param("id") int id);
+    User queryUserById(@Param("id") int id);
 
     int updateUser(User user);
 }

@@ -17,7 +17,7 @@ public class MyTest {
         SqlSession sqlSession = MybatisUtils.getSqlSession();
         UserMapper mapper = sqlSession.getMapper(UserMapper.class);
 
-        List<User> user = mapper.queryUserById(41);
+        User user = mapper.queryUserById(41);
         System.out.println(user);
 
 //        mapper.updateUser(new User(42,"太帅了", "哈哈哈"));
@@ -25,11 +25,30 @@ public class MyTest {
         sqlSession.clearCache();//手动清理缓存
 
         System.out.println("********");
-        List<User> user2 = mapper.queryUserById(41);
+        User user2 = mapper.queryUserById(41);
         System.out.println(user2);
 
         System.out.println(user == user2);
 
         sqlSession.close();
+    }
+
+    @Test
+    public void test2(){
+        SqlSession sqlSession = MybatisUtils.getSqlSession();
+        SqlSession sqlSession2 = MybatisUtils.getSqlSession();
+
+        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+        User user = (User) mapper.queryUserById(41);
+        System.out.println(user);
+        sqlSession.close();
+
+        UserMapper mapper2 = sqlSession2.getMapper(UserMapper.class);
+        User user2 = (User) mapper2.queryUserById(41);
+        System.out.println(user2);
+
+        System.out.println(user == user2);
+
+        sqlSession2.close();
     }
 }

@@ -10,7 +10,7 @@
     <settings>
         <setting name="logImpl" value="STDOUT_LOGGING"/>
         <!--显示开启全局缓存-->
-        <setting name="cacheEnable" value="true"/>
+        <setting name="cacheEnabled" value="true"/>
     </settings>
 
     <!--扫描包-->
