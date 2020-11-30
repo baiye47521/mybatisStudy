@@ -8,6 +8,18 @@
         select * from teacher;
     </select>
 
+    <!---按查询嵌套查询-->
+    <select id="getTeacher2" resultMap="TeacherStudent3">
+        select * from teacher where id = #{tid}
+    </select>
+    <resultMap id="TeacherStudent3" type="Teacher">
+        <collection property="students" javaType="ArrayList" column="id" ofType="Student" select="getStudentByTeacherId"/>
+    </resultMap>
+    <select id="getStudentByTeacherId" resultMap="Student">
+        select * from student where tid = #{tid}
+    </select>
+
+    <!---****************************************************************-->
 
 
     <!---按结果嵌套查询-->
