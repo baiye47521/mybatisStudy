@@ -5,11 +5,7 @@
 <mapper namespace="com.hand.dao.UserMapper">
 
     <!--在当前Mapper.xml开启二级缓存-->
-    <cache eviction="FIFO"
-           flushInterval="60000"
-           size="512"
-           readOnly="true"
-    />
+    <cache type="org.mybatis.caches.ehcache.EhcacheCache"/>
 
     <select id="queryUserById" resultType="user">
         select * from user where id = #{id};
